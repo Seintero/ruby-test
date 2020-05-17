@@ -1,0 +1,12 @@
+<h1>New</h1>
+<%= form_with model: @event do |form| %>
+  <%= form.text_field :title, placeholder: "Название" %>
+  <%- #todo:image upload -%>
+  <%= form.text_field :city, placeholder: "Город"%>
+  <%= form.text_field :location, placeholder: "Место проведения" %>
+  <%= form.url_field :link, placeholder: "Внешняя ссылка" %>
+  <%= form.datetime_local_field :event_date, placeholder: "Дата и время" %>
+  <%= form.text_area :description, placeholder: "Описание" %>
+  <%- #todo: organizer field -%>
+  <%= form.submit "Сохранить" %>
+<% end %>
