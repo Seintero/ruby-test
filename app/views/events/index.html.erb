@@ -1,4 +1,55 @@
-<h3>Main page</h3>
-<% @events.each do |event| %>
-  Name: <%= event.title %><br><br>
-<% end %>
+<section  class="jumbotron mb-0">
+  <div class="container">
+    <h1 class="display-3">Привет, мир!</h1>
+    <p>Тестовое приложение на Ruby on Rails для просмотра афиши IT-мероприятий.</p>
+  </div>
+</section>
+<div class="">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Ближайшие</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Прошедшие</a>
+    </li>
+  </ul>
+</div>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <% @events.each do |event| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card-body">
+              <h2><%= event.title %></h2>
+              <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= event.city %>, <%= event.location %></p>
+              <p class="card-text"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= event.event_date.strftime("%d.%m.%Y") %></p>
+              <p class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= event.event_date.strftime("%k:%M") %></p>
+              <p><a class="btn btn-primary " href="#" role="button">Подробнее »</a></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-outline-info btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать</button>
+                  <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-times" aria-hidden="true"></i> Удалить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <nav  class="mt-5" aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Назад</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Вперёд</a>
+      </li>
+    </ul>
+  </nav>
+  </div>
+</div>
