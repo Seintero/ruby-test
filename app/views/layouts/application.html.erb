@@ -16,7 +16,9 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="#">События</a>
       <a class="p-2 text-dark" href="#">Организаторы</a>
-      <a class="btn btn-outline-success" href="#"><i class="fa fa-plus" aria-hidden="true"></i> Добавить мероприятие</a>
+        <%= link_to new_event_path, class:'btn btn-outline-success' do %>
+          <i class="fa fa-plus" aria-hidden="true"></i> Добавить мероприятие
+        <% end %>
     </nav>
     <a class="btn btn-outline-primary" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
     <%-# <a class="btn btn-outline-primary" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a> %>

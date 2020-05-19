@@ -3,11 +3,15 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def new
-     @event = Event.new
+  def show
+    @event = Event.find(params[:id])
   end
 
-  def show
+  def new
+    @event = Event.new
+  end
+
+  def edit
     @event = Event.find(params[:id])
   end
 
@@ -18,6 +22,15 @@ class EventsController < ApplicationController
      else
        render "new"
      end
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render 'edit'
+    end
   end
 
   def destroy

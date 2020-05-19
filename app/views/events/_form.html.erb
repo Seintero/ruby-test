@@ -1,0 +1,42 @@
+<%= form_with(model: @event, local: true) do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@event.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+        <% @event.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Название</label>
+    <%= form.text_field :title, placeholder: "Название", class: "form-control"%>
+  </div>
+  <%- #todo:image upload -%>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Город</label>
+    <%= form.text_field :city, placeholder: "Город", class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Место проведения</label>
+    <%= form.text_field :location, placeholder: "Место проведения", class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Внешняя ссылка</label>
+    <%= form.url_field :link, placeholder: "Внешняя ссылка", class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Дата и время</label>
+    <%= form.datetime_local_field :event_date, placeholder: "Дата и время", class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Описание</label>
+    <%= form.text_area :description, placeholder: "Описание", class: "form-control"%>
+  </div>
+  <%- #todo: organizer field -%>
+  <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+<% end %>
