@@ -16,12 +16,21 @@
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="#">События</a>
       <a class="p-2 text-dark" href="#">Организаторы</a>
+      <% if admin_signed_in? %>
         <%= link_to new_event_path, class:'btn btn-outline-success' do %>
           <i class="fa fa-plus" aria-hidden="true"></i> Добавить мероприятие
         <% end %>
+      <% end %>
     </nav>
-    <a class="btn btn-outline-primary" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
-    <%-# <a class="btn btn-outline-primary" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a> %>
+    <% if admin_signed_in? %>
+      <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-outline-primary' do %>
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
+      <% end %>
+    <% else %>
+      <%= link_to new_admin_session_path, class: 'btn btn-outline-primary' do %>
+        <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
+      <% end %>
+    <% end %>
 </div>
   </header>
   <main role="main" class="pt-5">

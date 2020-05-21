@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :create, :destroy, :update]
+
   def index
     @events = Event.paginate(:page => params[:page], :per_page => 9)
   end
