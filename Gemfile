@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'will_paginate'
 gem 'devise'
 
+gem "mini_magick"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

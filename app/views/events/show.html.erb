@@ -6,4 +6,7 @@
   <%= @event.link %>
   <%= @event.event_date %>
   <%= @event.description %>
-  <%-# todo: organizer field-%>
+  <% if @event.image.attached? %>
+    <%= image_tag @event.image.variant(resize: "500 x400") %>
+  <% end %>
+<%-# todo: organizer field-%>
