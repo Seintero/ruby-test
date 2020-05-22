@@ -39,3 +39,29 @@
   height: 1%; }
 *:first-child + html .digg_pagination {
   overflow: hidden; }
+.events-card-main.card-body{
+  font-size: 20px;
+}
+.events-card-main.card-body p{
+  margin-bottom: 10px;
+}
+.events-card-main.card-body .card-text .fa {
+  color: #6c757d;
+  min-width: 22px;
+  font-size: 22px;
+  display: inline-block;
+  text-align: center;
+}
+
+.img-retina {
+  width: 100%
+}
+
+.events-card-list .card-text {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.btn-service {
+  min-width:42px;
+}
