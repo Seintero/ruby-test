@@ -26,9 +26,12 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'will_paginate'
+#auth
 gem 'devise'
-
+# for images
 gem "mini_magick"
+
+gem 'tinymce-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -33,7 +33,7 @@
 
     </div>
   <div class="event-description pt-5 pb-5">
-    <%= @event.description %>
+    <%= @event.description.html_safe  %>
   </div>
   </div>
 </section>

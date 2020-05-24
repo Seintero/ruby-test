@@ -4,6 +4,7 @@
 
 <% content_for :javascripts do %>
   <%= javascript_include_tag "select2.min.js" %>
+  <%= tinymce_assets %>
 <% end %>
 
 <%= form_with(model: @event, local: true) do |form| %>
@@ -50,7 +51,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Описание</label>
-    <%= form.text_area :description, placeholder: "Описание", class: "form-control"%>
+    <%= form.text_area :description, placeholder: "Описание", class: "tinymce form-control"%>
   </div>
   <%- #todo: organizer field -%>
   <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
