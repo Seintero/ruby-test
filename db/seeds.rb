@@ -9,3 +9,15 @@ Admin.create(
     email: "admin@admin.com",
     password: "qwerty"
 )
+
+data =  []
+i = 1
+
+while i <= 5 do
+  data.push({ "name" => "Организатор #{i}"})
+  i +=1
+end
+
+Organizer.create(
+    data
+)

@@ -1,0 +1,20 @@
+<section  class="jumbotron mb-0">
+  <div class="container">
+    <h1 class="">Список организаторов</h1>
+  </div>
+</section>
+<div class="album bg-light">
+  <div class="container">
+    <div class="row">
+      <% @organizers.each do |org| %>
+        <div class="col-md-3">
+          <%= link_to  org.name, organizer_path(org), class: "btn col-md-12 btn-primary mt-3 mb-2"   %>
+        </div>
+      <% end %>
+    </div>
+
+    <nav  class="mt-5 pagination justify-content-center digg_pagination">
+      <%= will_paginate @organizers  %>
+    </nav>
+  </div>
+</div>

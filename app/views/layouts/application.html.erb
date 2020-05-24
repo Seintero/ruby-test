@@ -6,8 +6,8 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= yield(:stylesheets) %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
   <header class="fixed-top p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -15,7 +15,7 @@
     <h5 class="my-0 mr-md-auto font-weight-normal">Seintero</h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <a class="p-2 text-dark" href="/">События</a>
-      <a class="p-2 text-dark" href="#">Организаторы</a>
+      <%= link_to  'Организаторы', organizers_path,class: 'p-2 text-dark'  %>
       <% if admin_signed_in? %>
         <%= link_to new_event_path, class:'btn btn-outline-success' do %>
           <i class="fa fa-plus" aria-hidden="true"></i> Добавить мероприятие
@@ -41,5 +41,9 @@
       <span class="text-muted">2020</span>
     </div>
   </footer>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'jquery-3.5.1.min' %>
+  <%= javascript_include_tag 'main' %>
+  <%= yield(:javascripts) %>
   </body>
 </html>

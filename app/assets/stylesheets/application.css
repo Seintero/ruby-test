@@ -42,3 +42,53 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
+/*** paginate ****/
+
+.digg_pagination {
+    cursor: default;
+}
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+    background: #fff;
+    padding: .5rem .85rem;
+    display: block;
+    float: left;
+}
+.digg_pagination .disabled {
+    color: #999999;
+    border: 1px solid  #dee2e6; }
+.digg_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #007bff;
+    color: white;
+    border: 1px solid #007bff; }
+.digg_pagination a {
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #dee2e6; }
+.digg_pagination a:hover, .digg_pagination a:focus {
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+.digg_pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+
+/*** select 2 ***/
+
+.select2-container .select2-selection--single {
+    height: 38px;
+}
+.select2-container--default .select2-selection--single{
+    border: 1px solid #ced4da;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #495057;
+    line-height: 35px;
+}

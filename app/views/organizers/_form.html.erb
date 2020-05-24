@@ -1,0 +1,19 @@
+<%= form_with(model: @organizer, local: true) do |form| %>
+  <% if @organizer.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@organizer.errors.count, "error") %> возникли ошибки:
+      </h2>
+        <% @organizer.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Имя</label>
+    <%= form.text_field :name, placeholder: "Имя", class: "form-control"%>
+  </div>
+  <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+<% end %>

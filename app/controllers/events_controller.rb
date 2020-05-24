@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :create, :destroy, :update]
 
+  # todo:  filter
   def index
     @events = Event.paginate(:page => params[:page], :per_page => 9)
   end
@@ -41,11 +42,9 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  # todo: delete/edit, auth, pagination, filter
-
   private
   def event_params
-    params.require(:event).permit(:title, :city, :location, :link, :event_date, :image, :description)
+    params.require(:event).permit(:title, :city, :location, :link, :event_date, :image, :description, :organizer_id)
   end
 
 end
