@@ -5,14 +5,14 @@
   </div>
 </section>
 <div class="">
-  <ul class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link active" href="#">Ближайшие</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Прошедшие</a>
-    </li>
-  </ul>
+  <div id="events-main-filter" class="toggle  justify-content-center mt-3">
+      <%= form_with(url: "/", method: "get", local: true)  do %>
+        <%= radio_button_tag(:filter, "future" ,  @filter=="future"? true : false) %>
+        <%= label_tag(:filter_future, "Ближайшие") %>
+        <%= radio_button_tag(:filter, "last",  @filter=="last"? true : false) %>
+        <%= label_tag(:filter_last, "Прошедшие") %>
+      <% end %>
+  </div>
 </div>
 <div class="album py-5 bg-light">
   <div class="container">
