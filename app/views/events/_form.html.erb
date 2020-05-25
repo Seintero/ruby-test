@@ -10,9 +10,6 @@
 <%= form_with(model: @event, local: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        <%= pluralize(@event.errors.count, "error") %>  возникли ошибки:
-      </h2>
         <% @event.errors.full_messages.each do |msg| %>
           <div class="alert alert-danger" role="alert">
             <%= msg %>

@@ -3,3 +3,6 @@ ru:
     previous_label: "&#8592; Назад"
     next_label: "Далее &#8594;"
     page_gap: "&hellip;"
+  errors:
+    messages:
+      blank: "не может быть пустым"

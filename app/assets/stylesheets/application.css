@@ -92,3 +92,11 @@
     color: #495057;
     line-height: 35px;
 }
+
+/********/
+.flex-row {
+flex-direction: row!important;
+}
+@media(max-width: 950px){
+    .navbar-collapse a.btn { display: block}
+}
