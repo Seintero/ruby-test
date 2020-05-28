@@ -1,0 +1,8 @@
+testing_ruby_app_picture_blob:
+  id: 1
+  key: by0nn16uwuv55slx3bkstd92l5o0
+  filename: test.png
+  content_type: image/png
+  metadata: '{"identified":true,"width":600,"height":600,"analyzed":true}'
+  byte_size: 2165
+  checksum: gK0pp5vjHG/MapAYitaBCQ==

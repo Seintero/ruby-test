@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+testing_ruby_app:
+  id: 1
+  title: Testing Ruby App
+  city: Rostov-on-Don
+  location: Planet Earth
+  link: http://hello.world
+  event_date: 2030-09-27 18:20:00
+  organizer: one
+
 # column: value
 #
-two: {}
+#two: {}
 # column: value

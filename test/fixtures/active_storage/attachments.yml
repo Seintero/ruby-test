@@ -1,0 +1,5 @@
+testing_ruby_app_image:
+  name: image
+  record_type: Event
+  record_id: 1
+  blob_id: 1

@@ -15,7 +15,7 @@
         <p class="card-text"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%d.%m.%Y") %></p>
         <p class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
         <% if !(@event.organizer == nil) %>
-          <p class="card-text"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %></p>
+          <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %></p>
         <% end %>
         <p class="card-text pt-3"><%= link_to 'Ссылка на мероприятие',  @event.link , class: "btn btn-outline-primary" %>  </p>
         <% if admin_signed_in? %>
@@ -32,8 +32,10 @@
     </div>
 
     </div>
-  <div class="event-description pt-5 pb-5">
-    <%= @event.description.html_safe  %>
-  </div>
+    <% unless @event.description == nil %>
+      <div class="event-description pt-5 pb-5">
+        <%= @event.description.html_safe  %>
+      </div>
+    <% end %>
   </div>
 </section>

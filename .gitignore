@@ -9,9 +9,12 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+
 !/log/.keep
 !/tmp/.keep
+
+/tmp/*
+!/tmp/storage/by/0n/*
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
