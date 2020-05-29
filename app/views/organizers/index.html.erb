@@ -5,14 +5,13 @@
 </section>
 <div class="album bg-light">
   <div class="container">
-    <div class="row">
+    <div class="row   p-5">
       <% @organizers.each do |org| %>
         <div class="col-md-3">
-          <%= link_to  org.name, organizer_path(org), class: "btn col-md-12 btn-primary mt-3 mb-2"   %>
+          <%= link_to  org.name, organizer_path(org), class: "btn col-md-12 btn-primary p-4 mt-3 mb-2"   %>
         </div>
       <% end %>
     </div>
-
     <nav  class="mt-5 pagination justify-content-center digg_pagination">
       <%= will_paginate @organizers  %>
     </nav>

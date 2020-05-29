@@ -14,8 +14,7 @@
 !/tmp/.keep
 
 /tmp/*
-!/tmp/storage/by/0n/*
-
+/storage_stage/*
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
