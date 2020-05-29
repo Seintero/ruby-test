@@ -1,10 +1,15 @@
 <% content_for :stylesheets do %>
   <%= stylesheet_link_tag 'select2.min.css' %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css' %>
+
 <% end %>
 
 <% content_for :javascripts do %>
   <%= javascript_include_tag "select2.min.js" %>
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js" %>
   <%= tinymce_assets %>
+  <%= javascript_include_tag "dadata.js" %>
+
 <% end %>
 
 <%= form_with(model: @event, local: true) do |form| %>
