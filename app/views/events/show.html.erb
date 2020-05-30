@@ -4,11 +4,14 @@
 <section class="container-fluid bg-light">
   <div class="container">
   <div class="row justify-content-center pt-5">
-    <div class="col-md-6 bg-secondary">
-      <% if @event.image.attached? %>
-        <%= image_tag @event.image.variant(combine_options: { gravity: 'Center', crop: '540x400+0+0' }), class: "img-retina img-fluid" %>
-      <% end %>
-    </div>
+    <% if @event.image.attached? %>
+        <div class="col-md-6 ">
+          <%= image_tag @event.image.variant(combine_options: { gravity: 'Center', crop: '540x400+0+0' }), class: "img-retina img-fluid" %>
+        </div>
+    <% else %>
+      <div class="col-md-6 bg-secondary"></div>
+  <% end %>
+
     <div class="col-md-6">
       <div class="events-card-main card-body">
         <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="city"><%= @event.city %></span>, <%= @event.location %></p>
