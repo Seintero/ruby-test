@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_115024) do
+ActiveRecord::Schema.define(version: 2020_06_08_182752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 2020_05_24_115024) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "city"
-    t.string "title"
+    t.string "city", null: false
+    t.string "title", null: false
     t.text "description"
-    t.string "location"
-    t.string "link"
-    t.datetime "event_date"
+    t.string "location", null: false
+    t.string "link", null: false
+    t.datetime "event_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organizer_id"
@@ -62,9 +62,10 @@ ActiveRecord::Schema.define(version: 2020_05_24_115024) do
   end
 
   create_table "organizers", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_organizers_on_name", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

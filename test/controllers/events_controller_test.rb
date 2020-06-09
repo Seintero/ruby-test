@@ -15,7 +15,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show future event" do
     get events_path, params: { filter: "future" }
-    assert_select ".card.mb-4.shadow-sm h3", "Testing Ruby App"
+    assert_select ".card.shadow-sm h3", "Testing Ruby App"
   end
 
    test "should show event detail page" do

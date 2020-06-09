@@ -1,5 +1,5 @@
 class OrganizersController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :destroy, :update]
+  before_action :authenticate_admin!, only: [:new, :create,  :edit, :destroy, :update]
 
   def index
     @organizers = Organizer.paginate(:page => params[:page], :per_page => 9)

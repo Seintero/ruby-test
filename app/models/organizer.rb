@@ -1,4 +1,5 @@
 class Organizer < ApplicationRecord
   has_many :events, dependent: :destroy
-  validates :name, presence: true
+  validates :name, uniqueness: {   message: "Организатор должен быть уникальным" } , presence:  {   message: "не может быть пустым" }
+
 end

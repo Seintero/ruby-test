@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :destroy, :update]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :destroy, :update]
 
   # todo:  filter
   def index

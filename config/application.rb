@@ -19,5 +19,6 @@ module Myapp
     config.time_zone = 'Moscow'
     config.active_record.default_timezone = 'Moscow'
     config.i18n.default_locale = :ru
+    config.exceptions_app = self.routes
   end
 end
