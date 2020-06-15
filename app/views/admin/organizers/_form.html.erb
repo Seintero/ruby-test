@@ -1,4 +1,4 @@
-<%= form_with(model: @organizer, local: true) do |form| %>
+<%= form_with( model: [:admin, @organizer], local: true) do |form| %>
   <% if @organizer.errors.any? %>
     <div id="error_explanation">
         <% @organizer.errors.full_messages.each do |msg| %>
@@ -13,4 +13,7 @@
     <%= form.text_field :name, placeholder: "Имя", class: "form-control"%>
   </div>
   <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+  <%= link_to   admin_organizers_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+    Назад к организаторам
+  <% end %>
 <% end %>

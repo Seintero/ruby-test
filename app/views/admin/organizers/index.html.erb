@@ -1,0 +1,35 @@
+<section  class="pt-3 pb-2">
+  <div class="container">
+    <h3 class="">Список организаторов</h3>
+    <%= link_to new_admin_organizer_path, class: current_class?(new_organizer_path)+' btn btn-outline-success mt-2 mb-2' do %>
+      <i class="fa fa-plus" aria-hidden="true"></i> Добавить организатора
+    <% end %>
+  </div>
+</section>
+<div class="container">
+      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+        <thead>
+        <tr role="row">
+          <th>Наименование</th>
+          <th></th></tr>
+        </thead>
+        <tbody>
+      <% @organizers.each do |org| %>
+          <tr role="row" class="odd">
+            <td><%= link_to  org.name, admin_organizer_path(org) %></td>
+            <td>
+              <%= link_to edit_admin_organizer_path(org), class: "btn btn-primary btn-sm", title: "Редактировать" do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+              <%= link_to admin_organizer_path(org), method: :delete, class: "btn btn-danger btn-sm", title: "Удалить",  data: { confirm: "Вы уверены, что хотите удалить?" } do %>
+                <i class="fa fa-trash-o "></i>
+              <%end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <nav  class="mt-5 pagination justify-content-center digg_pagination">
+          <%= will_paginate @organizers  %>
+    </nav>
+</div>

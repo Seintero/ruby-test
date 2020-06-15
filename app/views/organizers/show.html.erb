@@ -5,18 +5,6 @@
   <div class="container">
     <div class="row justify-content-center pt-5">
       <div class="col-md-6 pb-5 text-center">
-          <% if admin_signed_in? %>
-            <%= link_to edit_organizer_path(@organizer), class: "btn btn-outline-info btn-service mb-5", title: "Редактировать" do %>
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <% end %>
-          <% end %>
-
-          <% if admin_signed_in? %>
-            <%= link_to @organizer, method: :delete, class: "btn btn-outline-danger btn-service  mb-5", title: "Удалить",  data: { confirm: "Вы уверены, что хотите удалить?" } do %>
-              <i class="fa fa-times" aria-hidden="true"></i>
-            <%end %>
-          <%end %>
-
           <% if @organizer.events.empty? %>
             <div class="color-secondary">У организатора пока нет мероприятий</div>
           <% else %>

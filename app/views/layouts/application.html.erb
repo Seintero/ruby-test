@@ -22,11 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <a class=" <%= current_class?('/') %> btn-outline-secondary btn" href="/">События</a>
         <%= link_to  'Организаторы', organizers_path, class: current_class?(organizers_path)+' btn-outline-secondary btn'  %>
-        <% if admin_signed_in? %>
-          <%= link_to new_organizer_path, class: current_class?(new_organizer_path)+' btn btn-outline-success' do %>
-            <i class="fa fa-plus" aria-hidden="true"></i> Добавить организатора
-          <% end %>
-        <% end %>
+
         <% if admin_signed_in? %>
           <%= link_to new_event_path, class: current_class?(new_event_path)+' btn btn-outline-success' do %>
             <i class="fa fa-plus" aria-hidden="true"></i> Добавить мероприятие

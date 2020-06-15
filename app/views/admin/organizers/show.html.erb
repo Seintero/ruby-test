@@ -1,0 +1,15 @@
+<div class="row justify-content-center pt-5">
+  <div class="col-md-8">
+    <div class="card">
+      <header class="card-header">
+        Просмотр организатора
+      </header>
+      <div class="card-body">
+        <b>Наименование:</b> <span><%= @organizer.name %></span>
+      </div>
+
+    </div>  <%= link_to   admin_organizers_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+      Назад к организаторам
+    <% end %>
+  </div>
+</div>

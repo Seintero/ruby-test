@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   root 'events#index'
   resources :events, :organizers
 
+  namespace :admin do
+    resource :dashboard, only: :index
+    root to: 'dashboard#index'
+    resources :organizers
+  end
 
 end
