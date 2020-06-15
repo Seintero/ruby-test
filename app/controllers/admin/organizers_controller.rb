@@ -19,8 +19,10 @@ class Admin::OrganizersController < AdminController
   def create
     @organizer = Organizer.new(organizer_params)
     if @organizer.save
-      redirect_to [:admin, @organizer], notice: 'organizer success'
+      flash[:success] = "Организатор успешно создан"
+      redirect_to [:admin, @organizer]
     else
+      flash[:danger] = "Во время создания произошла ошибка"
       render "new"
     end
   end
@@ -28,15 +30,21 @@ class Admin::OrganizersController < AdminController
   def update
     @organizer = Organizer.find(params[:id])
     if @organizer.update(organizer_params)
+      flash[:success] = "Организатор успешно изменён"
       redirect_to [:admin, @organizer]
     else
+      flash[:danger] = "Во время редактирования произошла ошибка"
       render 'edit'
     end
   end
 
   def destroy
     @organizer = Organizer.find(params[:id])
-    @organizer.destroy
+    if @organizer.destroy
+      flash[:success] = "Организатор успешно удалён"
+    else
+      flash[:success] = "Во время удаления произошла ошибка"
+    end
     redirect_to admin_organizers_path
   end
 

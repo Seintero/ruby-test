@@ -18,8 +18,10 @@ class Admin::EventsController < AdminController
   def create
     @event = Event.new(event_params)
      if @event.save
-      redirect_to [:admin, @event], notice: 'event success'
+      flash[:success] = "Событие успешно создано"
+      redirect_to [:admin, @event]
      else
+       flash[:danger] = "Во время создания произошла ошибка"
        render "new"
      end
   end
@@ -27,15 +29,21 @@ class Admin::EventsController < AdminController
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
+      flash[:success] = "Событие успешно изменено"
       redirect_to  [:admin, @event]
     else
+      flash[:danger] = "Во время редактирования произошла ошибка"
       render 'edit'
     end
   end
 
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
+    if @event.destroy
+      flash[:success] = "Событие успешно удалено"
+    else
+      flash[:success] = "Во время удаления произошла ошибка"
+    end
     redirect_to admin_events_path
   end
 

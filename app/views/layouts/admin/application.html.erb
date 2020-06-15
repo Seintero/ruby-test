@@ -53,6 +53,9 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-xl-12">
+              <% flash.each do |message_type, message| %>
+                <div role="alert" class="mt-4 alert alert-<%= message_type %>"><%= message %></div>
+              <% end %>
               <%= yield %>
             </div>
           </div>
