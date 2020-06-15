@@ -2,7 +2,6 @@
   <%= stylesheet_link_tag 'select2.min.css' %>
   <%= stylesheet_link_tag 'bootstrap-datepicker.min.css' %>
   <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css' %>
-
 <% end %>
 
 <% content_for :javascripts do %>
@@ -12,17 +11,16 @@
   <%= javascript_include_tag "dadata.js" %>
   <%= javascript_include_tag "moment.min.js" %>
   <%= javascript_include_tag "bootstrap-datetimepicker.min.js" %>
-
 <% end %>
 
-<%= form_with(model: @event, local: true) do |form| %>
+<%= form_with(model:[:admin, @event], local: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-        <% @event.errors.full_messages.each do |msg| %>
-          <div class="alert alert-danger" role="alert">
-            <%= msg %>
-          </div>
-        <% end %>
+      <% @event.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <div class="form-group">
@@ -60,4 +58,7 @@
   </div>
   <%- #todo: organizer field -%>
   <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+  <%= link_to   admin_events_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+    Назад к событиям
+  <% end %>
 <% end %>

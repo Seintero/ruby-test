@@ -21,16 +21,6 @@
           <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %></p>
         <% end %>
         <p class="card-text pt-3"><%= link_to 'Ссылка на мероприятие',  @event.link , class: "btn btn-outline-primary" %>  </p>
-        <% if admin_signed_in? %>
-          <%= link_to edit_event_path(@event), class: "btn btn-outline-info btn-service", title: "Редактировать"  do %>
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-          <% end %>
-        <% end %>
-        <% if admin_signed_in? %>
-          <%= link_to @event, method: :delete, class: "btn btn-outline-danger btn-service", title: "Удалить" , data: { confirm: "Вы уверены, что хотите удалить?" } do %>
-            <i class="fa fa-times" aria-hidden="true"></i>
-          <%end %>
-        <%end %>
       </div>
     </div>
 
