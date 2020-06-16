@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag "https://api-maps.yandex.ru/2.1/?apikey=74e2696c-307e-46f7-9889-91dafb6ed2d4&lang=ru_RU" %>
+  <%= javascript_include_tag "maps" %>
+<% end %>
 <section class="banner-blue px-3 bg-secondary py-3 pt-md-5 pb-md-5 mx-auto text-center">
   <h2 class="text-light"><%= @event.title %></h2>
 </section>
@@ -14,7 +18,7 @@
 
     <div class="col-md-6">
       <div class="events-card-main card-body">
-        <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="city"><%= @event.city %></span>, <%= @event.location %></p>
+        <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <span id="event_city" class="city"><%= @event.city %></span>, <span id="event_location"><%= @event.location %></span></p>
         <p class="card-text"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%d.%m.%Y") %></p>
         <p class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
         <% if !(@event.organizer == nil) %>
@@ -23,12 +27,14 @@
         <p class="card-text pt-3"><%= link_to 'Ссылка на мероприятие',  @event.link , class: "btn btn-outline-primary" %>  </p>
       </div>
     </div>
-
     </div>
-    <% unless @event.description == nil %>
+    <% unless @event.description == nil || @event.description == "" %>
+      <hr>
       <div class="event-description pt-5 pb-5">
         <%= @event.description.html_safe  %>
       </div>
     <% end %>
+    <hr>
+    <div id="map" style="width: 100%; height: 400px"></div>
   </div>
 </section>

@@ -1,5 +1,4 @@
 class Admin::OrganizersController < AdminController
-
   def index
     @organizers = Organizer.paginate(:page => params[:page], :per_page => 9)
   end
@@ -49,8 +48,8 @@ class Admin::OrganizersController < AdminController
   end
 
   private
+
   def organizer_params
     params.require(:organizer).permit(:name)
   end
-
 end

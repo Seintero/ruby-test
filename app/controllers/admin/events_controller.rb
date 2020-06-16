@@ -1,6 +1,6 @@
 class Admin::EventsController < AdminController
   def index
-      @events = Event.order("event_date DESC").paginate(:page => params[:page], :per_page => 9)
+    @events = Event.order("event_date DESC").paginate(:page => params[:page], :per_page => 9)
   end
 
   def show
@@ -17,20 +17,20 @@ class Admin::EventsController < AdminController
 
   def create
     @event = Event.new(event_params)
-     if @event.save
+    if @event.save
       flash[:success] = "Событие успешно создано"
       redirect_to [:admin, @event]
-     else
-       flash[:danger] = "Во время создания произошла ошибка"
-       render "new"
-     end
+    else
+      flash[:danger] = "Во время создания произошла ошибка"
+      render "new"
+    end
   end
 
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
       flash[:success] = "Событие успешно изменено"
-      redirect_to  [:admin, @event]
+      redirect_to [:admin, @event]
     else
       flash[:danger] = "Во время редактирования произошла ошибка"
       render 'edit'
@@ -48,8 +48,8 @@ class Admin::EventsController < AdminController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:title, :city, :location, :link, :event_date, :image, :description, :organizer_id)
   end
-
 end
