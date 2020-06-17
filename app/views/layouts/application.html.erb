@@ -14,7 +14,7 @@
 <body>
 <header class="fixed-top px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <nav class="container navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand"  target="_blank" href="https://github.com/Seintero/ruby-test">Seintero</a>
+    <a class="navbar-brand" target="_blank" href="https://github.com/Seintero/ruby-test">Seintero</a>
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,19 +22,21 @@
       <ul class="navbar-nav mr-auto">
         <a class="nav-link waves-effect waves-light <%= current_class?('/') %> nav-item" href="/">События</a>
         <%= link_to 'Организаторы', organizers_path, class: current_class?(organizers_path) + ' nav-link waves-effect waves-light' %>
-            <% if admin_signed_in? %>
-              <%= link_to admin_root_url,  class: 'nav-link waves-effect waves-light' do %>
-               Панель администратора
-              <% end %>
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link waves-effect waves-light' do %>
-                <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
-              <% end %>
-            <% else %>
-              <%= link_to new_admin_session_path, class: 'nav-link waves-effect waves-light' do %>
-                <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
-              <% end %>
-            <% end %>
+        <% if admin_signed_in? %>
+          <%= link_to admin_root_url, class: 'nav-link waves-effect waves-light' do %>
+            Панель администратора
+          <% end %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link waves-effect waves-light' do %>
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
+          <% end %>
+        <% else %>
+          <%= link_to new_admin_session_path, class: 'nav-link waves-effect waves-light' do %>
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
+          <% end %>
+        <% end %>
       </ul>
+
+
     </div>
   </nav>
 </header>
