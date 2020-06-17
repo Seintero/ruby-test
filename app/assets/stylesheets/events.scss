@@ -3,15 +3,23 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 * html .digg_pagination {
-  height: 1%; }
+  height: 1%;
+}
+
 *:first-child + html .digg_pagination {
-  overflow: hidden; }
-.events-card-main.card-body{
+  overflow: hidden;
+}
+
+.events-card-main.card-body {
   font-size: 20px;
 }
-.events-card-main.card-body p{
-  margin-bottom: 10px;
+
+.events-card-main.card-body p {
+  margin-bottom: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dfe0e1;
 }
+
 .events-card-main.card-body .card-text .fa {
   color: #6c757d;
   min-width: 22px;
@@ -30,7 +38,7 @@
 }
 
 .btn-service {
-  min-width:42px;
+  min-width: 42px;
 }
 
 
@@ -45,10 +53,11 @@
   -webkit-box-direction: normal;
   flex-flow: row nowrap;
   -webkit-box-pack: start;
-  justify-content: center!important;
+  justify-content: center !important;
   -webkit-box-align: stretch;
   align-items: stretch;
 }
+
 .toggle input {
   width: 0;
   height: 0;
@@ -56,9 +65,12 @@
   outline: none;
   left: -9999px;
 }
+
 input[type="radio"]:focus {
-  outline: none;    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
+
 .toggle input + label {
   margin: 0;
   cursor: pointer;
@@ -77,23 +89,28 @@ input[type="radio"]:focus {
   -webkit-transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
   transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
 }
+
 .toggle input + label:first-of-type {
   border-radius: 6px 0 0 6px;
   border-right: none;
 }
+
 .toggle input + label:last-of-type {
   border-radius: 0 6px 6px 0;
   border-left: none;
 }
+
 .toggle input:hover + label {
   border-color: #213140;
 }
+
 .toggle input:checked + label {
   background-color: #007bff;
   color: #fff;
   border-color: #007bff;
   z-index: 1;
 }
+
 .toggle input:focus + label {
   outline: dotted 1px #ccc;
   outline-offset: 0.45rem;
@@ -103,6 +120,11 @@ input[type="radio"]:focus {
   height: 100%;
 }
 
-.card.shadow-sm img{
+.card.shadow-sm img {
   min-height: 300px;
+}
+
+#map {
+  height: 400px;
+  width: 100%
 }

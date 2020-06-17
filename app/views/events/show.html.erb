@@ -7,34 +7,43 @@
 </section>
 <section class="container-fluid bg-light">
   <div class="container">
-  <div class="row justify-content-center pt-5">
-    <% if @event.image.attached? %>
+    <div class="row justify-content-center pt-5">
+      <% if @event.image.attached? %>
         <div class="col-md-6 ">
-          <%= image_tag @event.image.variant(combine_options: { gravity: 'Center', crop: '540x400+0+0' }), class: "img-retina img-fluid" %>
+          <%= image_tag @event.image.variant(combine_options: {gravity: 'Center', crop: '540x400+0+0'}), class: "img-retina img-fluid" %>
         </div>
-    <% else %>
-      <div class="col-md-6 bg-secondary"></div>
-  <% end %>
-
-    <div class="col-md-6">
-      <div class="events-card-main card-body">
-        <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i> <span id="event_city" class="city"><%= @event.city %></span>, <span id="event_location"><%= @event.location %></span></p>
-        <p class="card-text"><i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%d.%m.%Y") %></p>
-        <p class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
-        <% if !(@event.organizer == nil) %>
-          <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %></p>
-        <% end %>
-        <p class="card-text pt-3"><%= link_to 'Ссылка на мероприятие',  @event.link , class: "btn btn-outline-primary" %>  </p>
+      <% else %>
+        <div class="col-md-6 bg-secondary"></div>
+      <% end %>
+      <div class="col-md-6">
+        <div class="events-card-main card-body">
+          <p class="card-text"><i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span id="event_city" class="city"><%= @event.city %></span>,
+            <span id="event_location"><%= @event.location %></span></p>
+          <p class="card-text">
+            <i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%d.%m.%Y") %></p>
+          <p class="card-text">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
+          <% if !(@event.organizer == nil) %>
+            <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %>
+            </p>
+          <% end %>
+          <p class="card-text">
+            <i class="fa fa-link" aria-hidden="true"></i> <%= link_to 'Ссылка на мероприятие', @event.link, class: "color-primary" %>
+          </p>
+          <p class="card-text">
+            <i class="fa fa-calendar-plus-o"></i> <%= link_to 'Добавить в календарь', :controller => 'events', :action => :show, :format => :ics %>
+          </p>
+        </div>
       </div>
-    </div>
     </div>
     <% unless @event.description == nil || @event.description == "" %>
       <hr>
       <div class="event-description pt-5 pb-5">
-        <%= @event.description.html_safe  %>
+        <%= @event.description.html_safe %>
       </div>
     <% end %>
     <hr>
-    <div id="map" style="width: 100%; height: 400px"></div>
+    <div id="map"></div>
   </div>
 </section>
