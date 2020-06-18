@@ -12,6 +12,10 @@
     <label for="exampleInputEmail1">Имя</label>
     <%= form.text_field :name, placeholder: "Имя", class: "form-control"%>
   </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Краткое описание</label>
+    <%= form.text_field :description, placeholder: "Описание", class: "form-control"%>
+  </div>
   <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
   <%= link_to   admin_organizers_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
     Назад к организаторам

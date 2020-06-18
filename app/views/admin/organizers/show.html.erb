@@ -6,8 +6,11 @@
       </header>
       <div class="card-body">
         <b>Наименование:</b> <span><%= @organizer.name %></span>
+        <% unless @organizer.description.blank? %>
+        <hr>
+          <b>Краткое описание:</b> <span><%= @organizer.description %></span>
+        <% end %>
       </div>
-
     </div>  <%= link_to   admin_organizers_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
       Назад к организаторам
     <% end %>

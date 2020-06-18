@@ -25,7 +25,8 @@
           <p class="card-text">
             <i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
           <% if !(@event.organizer == nil) %>
-            <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i> <%= @event.organizer.name %>
+            <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i>
+              <%= link_to @event.organizer.name, organizer_path(@event.organizer), class: "color-primary" %>
             </p>
           <% end %>
           <p class="card-text">

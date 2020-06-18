@@ -14,7 +14,7 @@ data =  []
 i = 1
 
 while i <= 5 do
-  data.push({ "name" => "Организатор #{i}"})
+  data.push({ "name" => "Организатор #{i}", "description" => "Ваш персональный проводник в мир знаний №#{i}"})
   i +=1
 end
 

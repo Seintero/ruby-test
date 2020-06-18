@@ -1,21 +1,33 @@
 <section class="banner-blue px-3 bg-secondary py-3 pt-md-5 pb-md-5 mx-auto text-center">
   <h2 class="text-light"><%= @organizer.name %></h2>
+  <% unless @organizer.description.blank? %>
+    <p class="text-light"><%= @organizer.description %></p>
+  <% end %>
 </section>
 <section class="container-fluid bg-light">
   <div class="container">
     <div class="row justify-content-center pt-5">
       <div class="col-md-6 pb-5 text-center">
-          <% if @organizer.events.empty? %>
-            <div class="color-secondary">У организатора пока нет мероприятий</div>
-          <% else %>
+        <% if @organizer.events.empty? %>
+          <div class="color-secondary">У организатора пока нет мероприятий</div>
+        <% else %>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Список мероприятий</th>
+            </tr>
+            </thead>
+            <tbody>
             <% @organizer.events.each do |event| %>
-              <div>
-                <%= link_to event.title, event_path(event) %>
-              </div>
+              <tr>
+                <th> <%= link_to event.title, event_path(event) %></th>
+              </tr>
             <% end %>
-          <% end %>
-        </div>
+            </tbody>
+          </table>
+        <% end %>
       </div>
     </div>
+  </div>
   </div>
 </section>

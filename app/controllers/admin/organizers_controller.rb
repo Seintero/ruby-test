@@ -50,6 +50,6 @@ class Admin::OrganizersController < AdminController
   private
 
   def organizer_params
-    params.require(:organizer).permit(:name)
+    params.require(:organizer).permit(:name, :description)
   end
 end
