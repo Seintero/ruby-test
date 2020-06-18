@@ -14,13 +14,11 @@
 <div class="container">
   <div id="events-main-filter" class="toggle  justify-content-center mt-3">
     <%= form_with(url: "/", method: "get", remote: true, :formats => [:js], :class => 'col-md-10') do %>
-
       <div class="form-row">
         <div class="col-md-4"><%= text_field_tag(:city, params[:city], :class => 'form-control', :placeholder => 'Город проведения') %></div>
         <div class="col-md-4"><%= text_field_tag(:date_start, params[:date_start], :class => 'form-control', :placeholder => 'Дата начала') %></div>
         <div class="col-md-4"><%= text_field_tag(:organizer, params[:organizer], :class => 'form-control', :placeholder => 'Организатор') %></div>
       </div>
-
       <div class="form-row">
         <div class="col-md-4">
           <%= radio_button_tag(:filter_date, "future", params[:filter_date] == "future" ? true : false) %>
@@ -33,9 +31,7 @@
         <div class="col-lg-4 col-md-12"> <%= submit_tag("Фильтровать", :id => "button", :name => "submit", :class => 'btn btn-outline-primary') %>
           <%= submit_tag("Сбросить", {:name => 'reset', :id => 'reset_button', :type => "reset", :class => 'btn btn-outline-secondary'}) %>
         </div>
-
       </div>
-
     <% end %>
   </div>
 </div>

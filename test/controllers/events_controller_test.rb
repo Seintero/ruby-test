@@ -13,7 +13,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show future event" do
-    get events_path, params: { filter: "future" }
+    get events_path, params: { filter_date_future: "future" }
     assert_select ".card.shadow-sm h3", "Testing Ruby App"
   end
 

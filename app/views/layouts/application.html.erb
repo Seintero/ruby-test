@@ -35,8 +35,12 @@
           <% end %>
         <% end %>
       </ul>
-
-
+      <%= form_with(url: search_events_path, method: "get", local: true, remote: false, :class => 'form-inline') do %>
+          <%= text_field_tag :search, params[:search], :class=>"form-control mr-sm-2", :placeholder => "Поиск" %>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+      <% end %>
     </div>
   </nav>
 </header>
