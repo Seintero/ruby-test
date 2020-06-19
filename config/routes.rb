@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'events#index'
   resources :organizers
+  resources :subscribers, only: :create
   resources :events do
     get 'search', on: :collection
   end

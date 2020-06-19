@@ -74,7 +74,7 @@ class Event < ApplicationRecord
       events = events.joins(:organizer).where('organizers.name LIKE ?', "%" + params[:organizer] + "%")
     end
 
-    events.order("event_date DESC").paginate(:page => params[:page], :per_page => 9)
+    events.order("event_date DESC").paginate(:page => params[:page], :per_page => 8)
 
   end
 
@@ -82,7 +82,7 @@ class Event < ApplicationRecord
   #
   def self.search(search, page)
       Event.where("title LIKE ? OR description LIKE ?",  "%" + search + "%",  "%" + search + "%")
-           .order("event_date DESC").paginate(:page => page, :per_page => 9)
+           .order("event_date DESC").paginate(:page => page, :per_page => 8)
   end
 
 end

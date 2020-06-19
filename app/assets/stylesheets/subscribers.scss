@@ -1,0 +1,12 @@
+// Place all the styles related to the Subscribers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.response {
+  margin-top: 20px;
+}
+.response.error {
+  color:#c61a0f
+}
+.response.success {
+  color:#1e7c1a
+}
