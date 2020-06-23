@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<p>Привет! Число предстоящих событий: <%= @events.count %></p>
+<% @events.each_with_index  do |event, index| %>
+<div><b><%= index+1 %></b> <span><%= link_to event.title, event_url(event) %></span> - <span><%= event.event_date.strftime("%d.%m.%Y %k:%M") %></span></div>
+<% end %>
+</body>
