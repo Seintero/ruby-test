@@ -33,6 +33,10 @@
               <i class="fa fa-users" aria-hidden="true"></i>
               Организаторы
             <% end %>
+            <%= link_to admin_subscribers_path, class: current_class?(admin_subscribers_path)+' nav-link  ' do %>
+              <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
+              Подписчики
+            <% end %>
             <%= link_to root_path, class: 'nav-link ' do %>
               <i class="fa fa-eye" aria-hidden="true"></i>
               Перейти на сайт

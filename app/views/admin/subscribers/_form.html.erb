@@ -1,0 +1,21 @@
+<%= form_with( model: [:admin, @subscriber], local: true) do |form| %>
+  <% if @subscriber.errors.any? %>
+    <div id="error_explanation">
+        <% @subscriber.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Статус</label>
+    <div class="form-control"><%= form.check_box :status, {checked:  @subscriber.active}%>
+    <%= form.label :status, 'Активен' %>
+    </div>
+  </div>
+  <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+  <%= link_to   admin_subscribers_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+    Назад к подписчикам
+  <% end %>
+<% end %>

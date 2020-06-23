@@ -1,0 +1,40 @@
+<section class="pt-3 pb-2">
+  <div class="container">
+    <h3 class="">Список подписчиков</h3>
+  </div>
+</section>
+<div class="container">
+  <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+    <thead>
+    <tr role="row">
+      <th>Email</th>
+      <th>Статус</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @subscribers.each do |sub| %>
+      <tr role="row" class="odd">
+        <td><%= sub.email %></td>
+        <td>
+          <% if sub.active? %>
+            <span class="badge badge-success label-mini">Активен</span>
+          <% else %>
+            <span class="badge badge-danger label-mini">Неактивен</span>
+          <% end %> </td>
+        <td>
+          <%= link_to edit_admin_subscriber_path(sub), class: "btn btn-primary btn-sm", title: "Редактировать" do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= link_to admin_subscriber_path(sub), method: :delete, class: "btn btn-danger btn-sm", title: "Удалить", data: {confirm: "Вы уверены, что хотите удалить?"} do %>
+            <i class="fa fa-trash-o "></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <nav class="mt-5 pagination justify-content-center digg_pagination">
+    <%= will_paginate @subscribers %>
+  </nav>
+</div>

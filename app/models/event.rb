@@ -81,8 +81,13 @@ class Event < ApplicationRecord
   # Search by title or description
   #
   def self.search(search, page)
-      Event.where("title LIKE ? OR description LIKE ?",  "%" + search + "%",  "%" + search + "%")
-           .order("event_date DESC").paginate(:page => page, :per_page => 8)
+    Event.where("title LIKE ? OR description LIKE ?", "%" + search + "%", "%" + search + "%")
+        .order("event_date DESC").paginate(:page => page, :per_page => 8)
   end
 
+  # Find events by event date
+  #
+  def self.find_by_date(date)
+    Event.where('DATE(event_date) = ?', date) #Time.now.strftime("%Y/%m/%d")
+  end
 end
