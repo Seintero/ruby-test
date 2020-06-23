@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class OrganizersControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
-
   def setup
     @organizer = organizers(:one)
   end

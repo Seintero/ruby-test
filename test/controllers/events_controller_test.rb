@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
-
   def setup
     @event = events(:testing_ruby_app)
   end

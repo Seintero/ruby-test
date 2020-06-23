@@ -37,6 +37,9 @@
 yarn-debug.log*
 .yarn-integrity
 .idea
+
+.env
+
 #docker
 Dockerfile
 docker-compose.yml
