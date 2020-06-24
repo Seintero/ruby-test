@@ -56,7 +56,7 @@
             <div class="subscribe_now">
               <h4>Хотите быть в курсе последних событий?</h4>
               <p>Подпишитесь на нашу рассылку</p>
-              <%= form_with( url: subscribers_path, :id => 'subscribe_form', locale:true, :class => 'subscribe_form') do  %>
+              <%= form_with( url: subscribers_path, :id => 'subscribe_form', locale:true, data: { type: :json }, :class => 'subscribe_form') do  %>
                 <span class="input-group">
                   <%= text_field(:subscriber, :email, :class => "form-control", :placeholder => "Введите ваш email",  :required => true) %>
                   <span class="input-group-btn">

@@ -2,18 +2,18 @@ class SubscribersController < ApplicationController
   def create
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js {}
+      format.js
       format.json {
         begin
           @subscriber = Subscriber.new(subscriber_params)
           if @subscriber.save
-              SubscriptionMailer.with(email: @subscriber.email).welcome_email.deliver_now
+            SubscriptionMailer.with(email: @subscriber.email).welcome_email.deliver_now
             data = {message: "Вы успешно подписаны", status: "success"}
           else
             data = {message: @subscriber.errors.full_messages, status: "error"}
           end
-        rescue
-          data = {message: "Произошла ошибка", status: "error"}
+        rescue => e
+          data = {message: "Произошла ошибка #{e.message}", status: "error"}
         end
 
         render json: data
