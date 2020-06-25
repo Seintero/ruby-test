@@ -19,5 +19,4 @@ class OrganizersControllerTest < ActionDispatch::IntegrationTest
     get admin_organizer_url(@organizer)
     assert_redirected_to new_admin_session_url ,  "Open admin area for unauthorized user"
   end
-
 end

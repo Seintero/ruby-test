@@ -45,5 +45,4 @@ class Admin::OrganizersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select ".card-body span:first-of-type", "can create"
   end
-
 end
