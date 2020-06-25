@@ -11,31 +11,32 @@
     <p>Тестовое приложение на Ruby on Rails для просмотра афиши IT-мероприятий.</p>
   </div>
 </section>
-<div class="container">
-  <div id="events-main-filter" class="toggle  justify-content-center mt-3">
-    <%= form_with(url: "/", method: "get", remote: true, :formats => [:js], :class => 'col-md-10') do %>
-      <div class="form-row">
-        <div class="col-md-4"><%= text_field_tag(:city, params[:city], :class => 'form-control', :placeholder => 'Город проведения') %></div>
-        <div class="col-md-4"><%= text_field_tag(:date_start, params[:date_start], :class => 'form-control', :placeholder => 'Дата начала') %></div>
-        <div class="col-md-4"><%= text_field_tag(:organizer, params[:organizer], :class => 'form-control', :placeholder => 'Организатор') %></div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-4">
-          <%= radio_button_tag(:filter_date, "future", params[:filter_date] == "future" ? true : false) %>
-          <%= label_tag(:filter_date_future, "Ближайшие") %>
+<div class="album pb-5 pt-4 bg-light">
+  <div class="container">
+    <div id="events-main-filter" class="toggle justify-content-center mt-3 pb-5">
+      <%= form_with(url: "/", method: "get", remote: true, :formats => [:js], :class => 'col-md-12') do %>
+        <div class="form-row">
+          <div class="col-md-6">
+            <%= radio_button_tag(:filter_date, "future", params[:filter_date] == "future" ? true : false) %>
+            <%= label_tag(:filter_date_future, "Ближайшие") %>
+          </div>
+          <div class="col-md-6">
+            <%= radio_button_tag(:filter_date, "last", params[:filter_date] == "last" ? true : false) %>
+            <%= label_tag(:filter_date_last, "Прошедшие") %>
+          </div>
         </div>
-        <div class="col-md-4">
-          <%= radio_button_tag(:filter_date, "last", params[:filter_date] == "last" ? true : false) %>
-          <%= label_tag(:filter_date_last, "Прошедшие") %>
+        <div class="form-row">
+          <div class="col-md-4"><%= text_field_tag(:city, params[:city], :class => 'form-control', :placeholder => 'Город проведения') %></div>
+          <div class="col-md-4"><%= text_field_tag(:date_start, params[:date_start], :class => 'form-control', :placeholder => 'Дата начала') %></div>
+          <div class="col-md-4"><%= text_field_tag(:organizer, params[:organizer], :class => 'form-control', :placeholder => 'Организатор') %></div>
         </div>
-        <div class="col-lg-4 col-md-12"> <%= submit_tag("Фильтровать", :id => "button", :name => "submit", :class => 'btn btn-outline-primary') %>
+        <div class="mt-2">
+          <%= submit_tag("Фильтровать", :id => "button", :name => "submit", :class => 'mr-2 btn btn-outline-primary') %>
           <%= submit_tag("Сбросить", {:name => 'reset', :id => 'reset_button', :type => "reset", :class => 'btn btn-outline-secondary'}) %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="album py-5 bg-light">
   <div id="filter-results" class="container">
     <%= render partial: "list_items" %>
   </div>
