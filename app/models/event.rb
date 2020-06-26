@@ -88,6 +88,6 @@ class Event < ApplicationRecord
   # Find events by event date
   #
   def self.find_by_date(date)
-    Event.where('DATE(event_date) = ?', date) #Time.now.strftime("%Y/%m/%d")
+    Event.where('DATE(event_date) = ?', date)
   end
 end
