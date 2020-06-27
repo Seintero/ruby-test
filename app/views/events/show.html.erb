@@ -21,9 +21,9 @@
             <span id="event_city" class="city"><%= @event.city %></span>,
             <span id="event_location"><%= @event.location %></span></p>
           <p class="card-text">
-            <i class="fa fa-calendar-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%d.%m.%Y") %></p>
+            <i class="fa fa-calendar-o" aria-hidden="true"></i> <%= formatted_date(@event.event_date) %></p>
           <p class="card-text">
-            <i class="fa fa-clock-o" aria-hidden="true"></i> <%= @event.event_date.strftime("%k:%M") %></p>
+            <i class="fa fa-clock-o" aria-hidden="true"></i> <%= formatted_time(@event.event_date) %></p>
           <% if !(@event.organizer == nil) %>
             <p class="card-text organizer"><i class="fa fa-user" aria-hidden="true"></i>
               <%= link_to @event.organizer.name, organizer_path(@event.organizer), class: "color-primary" %>
