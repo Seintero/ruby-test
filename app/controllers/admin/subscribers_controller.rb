@@ -13,9 +13,9 @@ class Admin::SubscribersController < AdminController
 
   def update
     @subscriber = Subscriber.find(params[:id])
-    if @subscriber.update(organizer_params)
+    if @subscriber.update(subscriber_params)
       flash[:success] = "Подписчик успешно изменён"
-      redirect_to [:admin, @subscriber]
+      redirect_to  admin_subscribers_path
     else
       flash[:danger] = "Во время редактирования произошла ошибка"
       render 'edit'
@@ -32,10 +32,9 @@ class Admin::SubscribersController < AdminController
     redirect_to admin_subscribers_path
   end
 
-
   private
 
   def subscriber_params
-    params.require(:subscriber).permit(:email)
+    params.require(:subscriber).permit(:email, :active)
   end
 end

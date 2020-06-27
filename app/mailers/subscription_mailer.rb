@@ -12,7 +12,7 @@ class SubscriptionMailer < ApplicationMailer
 #
   def upcoming_event_alert
     days = params[:days]
-    date = (Time.now + days * 86400).strftime("%Y-%m-%d")
+    date = (Time.now + days * 86400)
     @events = Event.find_by_date(date)
     unless @events.blank?
       Subscriber.all_active.each do |subscriber|

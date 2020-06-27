@@ -10,7 +10,7 @@
   <% end %>
   <div class="form-group">
     <label for="exampleInputEmail1">Статус</label>
-    <div class="form-control"><%= form.check_box :status, {checked:  @subscriber.active}%>
+    <div class="form-control"><%= form.check_box :active, {checked:  @subscriber.active}%>
     <%= form.label :status, 'Активен' %>
     </div>
   </div>
