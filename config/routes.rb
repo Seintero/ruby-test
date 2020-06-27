@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :dashboard, only: :index
     root to: 'dashboard#index'
-    resources :organizers, :events, :subscribers
+    resources :organizers, :events
+    resources :subscribers, except: :show
   end
 end

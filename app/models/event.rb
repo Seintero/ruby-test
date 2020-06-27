@@ -23,7 +23,7 @@ class Event < ApplicationRecord
   #
   def valid_datetime
     unless (event_date.methods.include? :strftime)
-      errors.add(:event_date, "Дата мероприятия должна быть в DD-MM-YYYY hh:mm")
+      errors.add(:event_date, "требуемый формат DD-MM-YYYY hh:mm")
     end
   end
 

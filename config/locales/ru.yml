@@ -6,3 +6,21 @@ ru:
   errors:
     messages:
       blank: "не может быть пустым"
+  activerecord:
+    models:
+      organizer: "Организатор"
+      event: "Событие"
+      subscriber: "Подписчик"
+    attributes:
+      organizer:
+        name: "Название"
+        description: "Описание"
+      event:
+        title: "Название"
+        description: "Описание"
+        city: "Город"
+        location: "Место"
+        link: "Url-адрес"
+        event_date: "Дата проведения"
+        organizer: "Организатор"
+        image: "Изображение"

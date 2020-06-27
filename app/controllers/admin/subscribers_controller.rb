@@ -3,10 +3,6 @@ class Admin::SubscribersController < AdminController
     @subscribers = Subscriber.paginate(:page => params[:page], :per_page => 9)
   end
 
-  def show
-    @subscribers = Subscriber.find(params[:id])
-  end
-
   def edit
     @subscriber = Subscriber.find(params[:id])
   end
@@ -15,7 +11,7 @@ class Admin::SubscribersController < AdminController
     @subscriber = Subscriber.find(params[:id])
     if @subscriber.update(subscriber_params)
       flash[:success] = "Подписчик успешно изменён"
-      redirect_to  admin_subscribers_path
+      redirect_to admin_subscribers_path
     else
       flash[:danger] = "Во время редактирования произошла ошибка"
       render 'edit'
