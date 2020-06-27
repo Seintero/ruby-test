@@ -11,8 +11,8 @@ class SubscriptionMailer < ApplicationMailer
 # Upcoming Event Alert
 #
   def upcoming_event_alert
-    days = params[:days]
-    date = (Time.now + days * 86400)
+    days = params.nil? ? 1 : params.fetch(:days, 1) #add default 'before days'
+    date = (Date.today + days)
     @events = Event.find_by_date(date)
     unless @events.blank?
       Subscriber.all_active.each do |subscriber|
