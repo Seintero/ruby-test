@@ -45,7 +45,7 @@ class Event < ApplicationRecord
   # Filter from main page
   #
   def self.main_filter(params)
-    events = Event.all
+    events = Event.includes(:image_attachment).all
     sql_params = []
     conditions = []
 

@@ -4,6 +4,6 @@ class OrganizersController < ApplicationController
   end
 
   def show
-    @organizer = Organizer.find(params[:id])
+    @organizer = Organizer.includes(:events).find(params[:id])
   end
 end
