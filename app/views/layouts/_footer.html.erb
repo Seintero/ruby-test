@@ -1,0 +1,26 @@
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <div id="subscription_area">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="subscribe_now">
+              <h4>Хотите быть в курсе последних событий?</h4>
+              <p>Подпишитесь на нашу рассылку</p>
+              <%= form_with(url: subscribers_path, :id => 'subscribe_form', locale: true, data: {type: :json}, :class => 'subscribe_form') do %>
+                <span class="input-group">
+                  <%= text_field(:subscriber, :email, :class => "form-control", :placeholder => "Введите ваш email", :required => true) %>
+                  <span class="input-group-btn">
+                    <%= submit_tag "OK", :class => "btn btn-success" %>
+                  </span>
+                </span>
+              <% end %>
+              <p class="response"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="text-muted copyrights-line">Тестовое приложение (c) <%= Time.current.year %> г.</span>
+  </div>
+</footer>

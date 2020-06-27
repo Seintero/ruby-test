@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ruby on Rails test App</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css' %>
@@ -12,67 +12,11 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
-<header class="fixed-top px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <nav class="container navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" target="_blank" href="https://github.com/Seintero/ruby-test">Seintero</a>
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarSupportedContent" style="">
-      <ul class="navbar-nav mr-auto">
-        <a class="nav-link waves-effect waves-light <%= current_class?('/') %> nav-item" href="/">События</a>
-        <%= link_to 'Организаторы', organizers_path, class: current_class?(organizers_path) + ' nav-link waves-effect waves-light' %>
-        <% if admin_signed_in? %>
-          <%= link_to admin_root_url, class: 'nav-link waves-effect waves-light' do %>
-            Панель администратора
-          <% end %>
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link waves-effect waves-light' do %>
-            <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
-          <% end %>
-        <% else %>
-          <%= link_to new_admin_session_path, class: 'nav-link waves-effect waves-light' do %>
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
-          <% end %>
-        <% end %>
-      </ul>
-      <%= form_with(url: search_events_path, method: "get", local: true, remote: false, :class => 'form-inline') do %>
-        <%= text_field_tag :search, params[:search], :class => "form-control mr-sm-2", :placeholder => "Поиск", :required => true %>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
-      <% end %>
-    </div>
-  </nav>
-</header>
+<%= render 'layouts/header' %>
 <main role="main" class="pt-5">
   <%= yield %>
 </main>
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <div id="subscription_area">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="subscribe_now">
-              <h4>Хотите быть в курсе последних событий?</h4>
-              <p>Подпишитесь на нашу рассылку</p>
-              <%= form_with( url: subscribers_path, :id => 'subscribe_form', locale:true, data: { type: :json }, :class => 'subscribe_form') do  %>
-                <span class="input-group">
-                  <%= text_field(:subscriber, :email, :class => "form-control", :placeholder => "Введите ваш email",  :required => true) %>
-                  <span class="input-group-btn">
-                    <%= submit_tag "OK", :class => "btn btn-success" %>
-                  </span>
-                </span>
-              <% end %>
-              <p class="response"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span class="text-muted copyrights-line">Тестовое приложение (c) <%= Time.current.year %> г.</span>
-  </div>
-</footer>
+<%= render 'layouts/footer' %>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'false' %>
 <%= javascript_include_tag 'jquery-3.5.1.min' %>
 <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' %>

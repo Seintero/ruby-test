@@ -1,3 +1,4 @@
+<% provide(:title, @event.title) %>
 <% content_for :javascripts do %>
   <%= javascript_include_tag "https://api-maps.yandex.ru/2.1/?apikey=74e2696c-307e-46f7-9889-91dafb6ed2d4&lang=ru_RU" %>
   <%= javascript_include_tag "maps" %>
