@@ -2,8 +2,8 @@ class Event < ApplicationRecord
   has_one_attached :image
   belongs_to :organizer
   validates :city, :location, :image, :organizer, presence: true
-  validates :title, length: {minimum: 5, message: "Минимальное число символов 5"}, presence: true
-  validates :link, format: {with: /\Ahttps?:\/\/[www]?[a-zA-Z0-9_-]*[.][a-z]{2,}(\/.*)?\z/, message: "Введите корректный url адрес"}
+  validates :title, length: {minimum: 5, message: "минимальное число символов 5"}, presence: true
+  validates :link, format: {with: /\Ahttps?:\/\/[www]?[a-zA-Z0-9_-]*[.][a-z]{2,}(\/.*)?\z/, message: "введите корректный url адрес"}
   validates :event_date, presence: true
   validate :image_size, :valid_datetime
 
