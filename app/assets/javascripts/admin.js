@@ -1,7 +1,6 @@
 (function ($) {
     "use strict";
-
-    // Add active state to sidbar nav links
+    // Add active state to sidebar nav links
     var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
     $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function () {
         if (this.href === path) {
@@ -64,20 +63,6 @@
         var $city = $("#event_city");
         var $street = $("#event_location");
 
-        function join(arr /*, separator */) {
-            var separator = arguments.length > 1 ? arguments[1] : ", ";
-            return arr.filter(function (n) {
-                return n
-            }).join(separator);
-        }
-
-        function cityToString(address) {
-            return join([
-                join([address.city_type, address.city], " "),
-                join([address.settlement_type, address.settlement], " ")
-            ]);
-        }
-
         function formatSelected(suggestion) {
             return suggestion.data.city;
         }
@@ -100,8 +85,4 @@
             constraints: $city,
         });
     }
-
-
-
-
 })(jQuery);
