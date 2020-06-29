@@ -59,7 +59,7 @@ class Event < ApplicationRecord
     end
 
     if params.has_key?("city") && !params[:city].empty?
-      conditions << ["city LIKE ?"]
+      conditions << ["city ILIKE ?"]
       sql_params << "%" + params[:city] + "%"
     end
 
@@ -71,7 +71,7 @@ class Event < ApplicationRecord
     events = events.where(conditions.join(' AND '), *sql_params)
 
     if params.has_key?("organizer") && !params[:organizer].empty?
-      events = events.joins(:organizer).where('organizers.name LIKE ?', "%" + params[:organizer] + "%")
+      events = events.joins(:organizer).where('organizers.name ILIKE ?', "%" + params[:organizer] + "%")
     end
 
     events.order("event_date DESC").paginate(:page => params[:page], :per_page => 8)
@@ -80,7 +80,7 @@ class Event < ApplicationRecord
   # Search by title or description
   #
   def self.search(search, page = 1)
-    Event.where("title LIKE ? OR description LIKE ?", "%" + search + "%", "%" + search + "%")
+    Event.where("title ILIKE ? OR description ILIKE ?", "%" + search + "%", "%" + search + "%")
          .order("event_date DESC").paginate(:page => page, :per_page => 8)
   end
 
