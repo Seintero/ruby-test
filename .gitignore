@@ -39,6 +39,7 @@ yarn-debug.log*
 .idea
 
 .env
+.rubocop.yml
 
 #docker
 Dockerfile

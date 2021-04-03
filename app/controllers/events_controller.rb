@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'icalendar'
 
 class EventsController < ApplicationController
@@ -23,10 +25,10 @@ class EventsController < ApplicationController
   end
 
   def search
-    if params.has_key?("search") && !params[:search].empty?
-      @events = Event.search(params[:search], params[:page])
-    else
-      @events = ""
-    end
+    @events = if params.key?('search') && !params[:search].empty?
+                Event.search(params[:search], params[:page])
+              else
+                ''
+              end
   end
 end

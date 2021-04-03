@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SubscriberTest < ActiveSupport::TestCase
@@ -5,16 +7,16 @@ class SubscriberTest < ActiveSupport::TestCase
     @subscriber = subscribers(:one)
   end
 
-  test "should be valid" do
+  test 'should be valid' do
     assert @subscriber.valid?
   end
 
-  test "should not save empty" do
+  test 'should not save empty' do
     subscriber = Subscriber.new
-    assert_not subscriber.save, "Saved empty subscriber"
+    assert_not subscriber.save, 'Saved empty subscriber'
   end
 
-  test "email validation should reject invalid addresses" do
+  test 'email validation should reject invalid addresses' do
     invalid_addresses = %w[test@test,com test___test__test.org test.name@test.
                            test@test___test.com test@test+test.com]
     invalid_addresses.each do |invalid_address|
@@ -23,21 +25,21 @@ class SubscriberTest < ActiveSupport::TestCase
     end
   end
 
-  test "email addresses should be unique" do
+  test 'email addresses should be unique' do
     duplicate = @subscriber.dup
     @subscriber.save
     assert_not duplicate.valid?
   end
 
-  test "email addresses should be unique in uppercase" do
+  test 'email addresses should be unique in uppercase' do
     duplicate = @subscriber.dup
     duplicate.email = @subscriber.email.upcase
     @subscriber.save
     assert_not duplicate.valid?
   end
 
-  test "email addresses should be saved as lower-case" do
-    mixed_case_email = "Test@ExAMPle.rU"
+  test 'email addresses should be saved as lower-case' do
+    mixed_case_email = 'Test@ExAMPle.rU'
     @subscriber.email = mixed_case_email
     @subscriber.save
     assert_equal mixed_case_email.downcase, @subscriber.reload.email

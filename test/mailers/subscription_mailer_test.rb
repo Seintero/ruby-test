@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SubscriptionMailerTest < ActionMailer::TestCase
-  test "invite" do
-    email = SubscriptionMailer.with(email: ENV['TEST_EMAIL']).welcome_email()
+  test 'invite' do
+    email = SubscriptionMailer.with(email: ENV['TEST_EMAIL']).welcome_email
     assert_emails 1 do
       email.deliver_now
     end
