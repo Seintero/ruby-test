@@ -44,6 +44,6 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
 
   test 'not show event in admin' do
     get admin_event_url(@event)
-    assert_redirected_to new_admin_session_url, 'Open admin area for unauthorized user'
+    assert_redirected_to new_administrator_session_url, 'Open admin area for unauthorized user'
   end
 end

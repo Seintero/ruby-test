@@ -25,10 +25,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @events = if params.key?('search') && !params[:search].empty?
-                Event.search(params[:search], params[:page])
-              else
-                ''
-              end
+    @events = ''
+    @events = Event.search(params[:search], params[:page]) if params.key?('search') && !params[:search].empty?
   end
 end

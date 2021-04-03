@@ -45,7 +45,7 @@ class Event < ApplicationRecord
   end
 
   # Filter from main page
-  #
+  # TODO: refactor this
   def self.main_filter(params)
     events = Event.includes(:image_attachment)
     sql_params = []
@@ -73,9 +73,7 @@ class Event < ApplicationRecord
 
     events = events.where(conditions.join(' AND '), *sql_params)
 
-    if params.key?('organizer') && !params[:organizer].empty?
-      events = events.joins(:organizer).where('organizers.name ILIKE ?', "%#{params[:organizer]}%")
-    end
+    events = events.joins(:organizer).where('organizers.name ILIKE ?', "%#{params[:organizer]}%") if params.key?('organizer') && !params[:organizer].empty?
 
     events.order('event_date DESC').paginate(page: params[:page], per_page: 8)
   end

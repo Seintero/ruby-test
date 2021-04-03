@@ -8,15 +8,15 @@
       <ul class="navbar-nav mr-auto">
         <a class="nav-link waves-effect waves-light <%= current_class?('/') %> nav-item" href="/">События</a>
         <%= link_to 'Организаторы', organizers_path, class: current_class?(organizers_path) + ' nav-link waves-effect waves-light' %>
-        <% if admin_signed_in? %>
+        <% if administrator_signed_in? %>
           <%= link_to admin_root_url, class: 'nav-link waves-effect waves-light' do %>
             Панель администратора
           <% end %>
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link waves-effect waves-light' do %>
+          <%= link_to destroy_administrator_session_path, method: :delete, class: 'nav-link waves-effect waves-light' do %>
             <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
           <% end %>
         <% else %>
-          <%= link_to new_admin_session_path, class: 'nav-link waves-effect waves-light' do %>
+          <%= link_to new_administrator_session_path, class: 'nav-link waves-effect waves-light' do %>
             <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
           <% end %>
         <% end %>

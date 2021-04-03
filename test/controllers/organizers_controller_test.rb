@@ -19,6 +19,6 @@ class OrganizersControllerTest < ActionDispatch::IntegrationTest
 
   test 'not show organizer in admin' do
     get admin_organizer_url(@organizer)
-    assert_redirected_to new_admin_session_url, 'Open admin area for unauthorized user'
+    assert_redirected_to new_administrator_session_url, 'Open admin area for unauthorized user'
   end
 end

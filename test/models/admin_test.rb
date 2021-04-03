@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class AdminTest < ActiveSupport::TestCase
+class AdministratorTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

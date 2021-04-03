@@ -7,7 +7,7 @@ module Admin
     include Devise::Test::IntegrationHelpers
 
     def setup
-      sign_in admins(:user)
+      sign_in administrators(:user)
       @event = events(:testing_ruby_app)
     end
 

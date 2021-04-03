@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   match '/500', to: 'errors#internal_server_error', via: :all
   match '/403', to: 'errors#forbidden_error', via: :all
 
-  devise_for :admins
+  devise_for :administrators
 
   root 'events#index'
   resources :organizers
