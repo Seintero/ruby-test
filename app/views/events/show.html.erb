@@ -9,9 +9,9 @@
 <section class="container-fluid bg-light">
   <div class="container">
     <div class="row justify-content-center pt-5">
-      <% if @event.image.attached? %>
+      <% if @event.image? %>
         <div class="col-md-6 ">
-          <%= image_tag @event.image.variant(combine_options: {gravity: 'Center', crop: '540x400+0+0'}), class: "img-retina img-fluid" %>
+          <%= image_tag @event.image.url, class: "img-retina img-fluid" %>
         </div>
       <% else %>
         <div class="col-md-6 bg-secondary"></div>

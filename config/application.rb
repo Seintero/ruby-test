@@ -22,5 +22,6 @@ module Myapp
     config.active_record.default_timezone = 'Moscow'
     config.i18n.default_locale = :ru
     config.exceptions_app = routes
+    config.autoload_paths << "#{Rails.root}/lib"
   end
 end

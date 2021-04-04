@@ -4,8 +4,8 @@
       <div class="col-lg-6 mb-4 col-md-6 col-sm-12">
         <div class="card shadow-sm">
           <div class="img-wrap">
-            <% if event.image.attached? %>
-              <%= image_tag event.image.variant(combine_options: {resize: '200x200'}), :class => "img-retina" %>
+            <% if event.image? %>
+              <%= image_tag event.image.thumb.url, :class => "img-retina" %>
             <% else %>
               <svg class="bd-placeholder-img" width="200" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                 <rect width="200" height="200" fill="#55595c"></rect>

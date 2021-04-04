@@ -9,9 +9,9 @@
         Просмотр события
       </header>
       <div class="card-body">
-        <% if @event.image.attached? %>
+        <% if @event.image? %>
           <div class="col-md-6 ">
-            <%= image_tag @event.image.variant(combine_options: {gravity: 'Center', crop: '540x400+0+0'}), class: "img-retina img-fluid" %>
+            <%= image_tag @event.image.url, class: "img-retina img-fluid" %>
           </div>
           <hr>
         <% end %>

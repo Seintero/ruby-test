@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Event < ApplicationRecord
-  has_one_attached :image
+  mount_uploader :image, ImageUploader
+
   belongs_to :organizer
   validates :city, :location, :image, :organizer, presence: true
   validates :title, length: { minimum: 5, message: 'минимальное число символов 5' }, presence: true
@@ -9,19 +10,7 @@ class Event < ApplicationRecord
             format: { with: %r{\Ahttps?://[www]?[a-zA-Z0-9_-]*[.][a-z]{2,}(/.*)?\z},
                       message: 'введите корректный url адрес' }
   validates :event_date, presence: true
-  validate :image_size, :valid_datetime
-
-  # Validate image size
-  #
-  def image_size
-    return unless image.attached?
-
-    if image.byte_size > 1_000_000
-      errors.add(:image, 'Размер файла превышает 1MB')
-    elsif !image.content_type.starts_with?('image/')
-      errors.add(:image, 'Файл не относится к изображениям')
-    end
-  end
+  validate :valid_datetime
 
   # Validate date format
   #
@@ -47,7 +36,7 @@ class Event < ApplicationRecord
   # Filter from main page
   # TODO: refactor this
   def self.main_filter(params)
-    events = Event.includes(:image_attachment)
+    events = Event
     sql_params = []
     conditions = []
 
@@ -57,10 +46,10 @@ class Event < ApplicationRecord
         conditions << ['event_date < ?']
       when 'future'
         conditions << ['event_date > ?']
+        endgit
+        sql_params << DateTime.now
       end
-      sql_params << DateTime.now
     end
-
     if params.key?('city') && !params[:city].empty?
       conditions << ['city ILIKE ?']
       sql_params << "%#{params[:city]}%"
