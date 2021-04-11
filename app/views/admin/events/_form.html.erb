@@ -55,6 +55,15 @@
     <label for="exampleInputEmail1">Описание</label>
     <%= form.text_area :description, placeholder: "Описание", class: "tinymce form-control"%>
   </div>
+  <div class="form-checkbox">
+    <p>Tags:</p>
+    <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name, {multiple: true, class: 'checkbox form-check-input inline'}) do |b|%>
+      <div class="form-check">
+        <%=   b.label(:"data-value" => b.value, class: "form-check-label") { b.check_box(class: "form-check-input") + b.text } %>
+      </div>
+    <% end %>
+  </div>
+
   <%- #todo: organizer field -%>
   <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
   <%= link_to   admin_events_path, class: 'btn btn-outline-success mt-2 mb-2' do %>

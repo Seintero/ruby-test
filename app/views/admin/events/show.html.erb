@@ -35,6 +35,12 @@
           </div>
         <% end %>
         <hr>
+        <% unless @event.tags.empty? %>
+          <% @event.tags.each do |tag| %>
+          <span class="badge badge-light"><%=tag.name %></span>
+          <% end %>
+        <% end %>
+        <hr>
         <div id="map" style="width: 100%; height: 400px"></div>
       </div>
     </div>

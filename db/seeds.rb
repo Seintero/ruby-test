@@ -23,3 +23,7 @@ end
 Organizer.create(
   data
 )
+
+Tag.create(
+  [{ name: 'backend' }, { name: 'frontend' }, { name: 'database' }]
+)

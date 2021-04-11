@@ -33,6 +33,10 @@
               <i class="fa fa-users" aria-hidden="true"></i>
               Организаторы
             <% end %>
+            <%= link_to admin_tags_path, class: current_class?(admin_tags_path)+' nav-link  ' do %>
+              <i class="fa fa-tags" aria-hidden="true"></i>
+              Теги
+            <% end %>
             <%= link_to admin_subscribers_path, class: current_class?(admin_subscribers_path)+' nav-link  ' do %>
               <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
               Подписчики

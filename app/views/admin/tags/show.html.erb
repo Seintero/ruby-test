@@ -1,0 +1,18 @@
+<div class="row justify-content-center pt-5">
+  <div class="col-md-8">
+    <div class="card">
+      <header class="card-header">
+        Просмотр тега
+      </header>
+      <div class="card-body">
+        <b>Наименование:</b> <span><%= @tag.name %></span>
+
+        <hr>
+          <b>Активность:</b> <span><%= @tag.active %></span>
+
+      </div>
+    </div>  <%= link_to   admin_tags_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+      Назад к тегам
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DropActiveStorageTables < ActiveRecord::Migration[6.0]
   def up
     drop_table :active_storage_attachments
@@ -5,6 +7,6 @@ class DropActiveStorageTables < ActiveRecord::Migration[6.0]
   end
 
   def down
-    fail ActiveRecord::IrreversibleMigration
+    raise ActiveRecord::IrreversibleMigration
   end
 end

@@ -36,6 +36,13 @@
           <p class="card-text">
             <i class="fa fa-calendar-plus-o"></i> <%= link_to 'Добавить в календарь', :controller => 'events', :action => :show, :format => :ics %>
           </p>
+          <p>
+            <% unless @event.tags.empty? %>
+              <% @event.tags.each do |tag| %>
+                <span class="badge badge-primary"><%=tag.name %></span>
+              <% end %>
+            <% end %>
+          </p>
         </div>
       </div>
     </div>

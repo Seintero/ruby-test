@@ -1,0 +1,23 @@
+<%= form_with( model: [:admin, @tag], local: true) do |form| %>
+  <% if @tag.errors.any? %>
+    <div id="error_explanation">
+        <% @tag.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <%= msg %>
+          </div>
+        <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Наименование</label>
+    <%= form.text_field :name, placeholder: "Наименование", class: "form-control"%>
+  </div>
+  <label for="exampleInputEmail1">Статус</label>
+  <div class="form-control"><%= form.check_box :active, {checked:  @tag.active}%>
+    <%= form.label :status, 'Активен' %>
+  </div>
+  <%= form.submit "Сохранить", :class => 'btn btn-primary' %>
+  <%= link_to   admin_tags_path, class: 'btn btn-outline-success mt-2 mb-2' do %>
+    Назад к тегам
+  <% end %>
+<% end %>

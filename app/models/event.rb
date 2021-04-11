@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :organizer
+  has_and_belongs_to_many :tags
+  accepts_nested_attributes_for :tags
   validates :city, :location, :image, :organizer, presence: true
   validates :title, length: { minimum: 5, message: 'минимальное число символов 5' }, presence: true
   validates :link,

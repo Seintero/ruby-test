@@ -16,6 +16,7 @@ module Admin
 
     def edit
       @event = Event.find(params[:id])
+      p @event.tags
     end
 
     def create
@@ -53,7 +54,7 @@ module Admin
     private
 
     def event_params
-      params.require(:event).permit(:title, :city, :location, :link, :event_date, :image, :description, :organizer_id)
+      params.require(:event).permit(:title, :city, :location, :link, :event_date, :image, :description, :organizer_id, tag_ids: [])
     end
   end
 end
