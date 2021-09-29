@@ -6,6 +6,16 @@ class Event < ApplicationRecord
   belongs_to :organizer
   has_and_belongs_to_many :tags
   accepts_nested_attributes_for :tags
+
+  scope :city, ->(city) { where('city ILIKE ?', "%#{city}%") if city.present? }
+  scope :date_start, ->(date_start) { where('DATE(event_date) = ?', Time.parse(date_start).strftime('%Y/%m/%d')) if date_start.present? }
+  scope :past_or_future, ->(filter_date) do
+    return unless filter_date.present?
+    condition = filter_date == 'last'?  'event_date < ?' : 'event_date > ?'
+    where(condition, DateTime.now)
+  end
+  scope :organizer, ->(organizer) { joins(:organizer).where('organizers.name ILIKE ?', "%#{organizer}%") if organizer.present? }
+
   validates :city, :location, :image, :organizer, presence: true
   validates :title, length: { minimum: 5, message: 'минимальное число символов 5' }, presence: true
   validates :link,
@@ -33,40 +43,6 @@ class Event < ApplicationRecord
     event.last_modified = updated_at
     event.uid = event.url = "#events/#{id}"
     event
-  end
-
-  # Filter from main page
-  # TODO: refactor this
-  def self.main_filter(params)
-    events = Event
-    sql_params = []
-    conditions = []
-
-    if params.key?('filter_date') && !params[:filter_date].empty?
-      case params[:filter_date]
-      when 'last'
-        conditions << ['event_date < ?']
-      when 'future'
-        conditions << ['event_date > ?']
-        endgit
-        sql_params << DateTime.now
-      end
-    end
-    if params.key?('city') && !params[:city].empty?
-      conditions << ['city ILIKE ?']
-      sql_params << "%#{params[:city]}%"
-    end
-
-    if params.key?('date_start') && !params[:date_start].empty?
-      conditions << ['DATE(event_date) = ?']
-      sql_params << Time.parse(params[:date_start]).strftime('%Y/%m/%d')
-    end
-
-    events = events.where(conditions.join(' AND '), *sql_params)
-
-    events = events.joins(:organizer).where('organizers.name ILIKE ?', "%#{params[:organizer]}%") if params.key?('organizer') && !params[:organizer].empty?
-
-    events.order('event_date DESC').paginate(page: params[:page], per_page: 8)
   end
 
   # Search by title or description

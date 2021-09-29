@@ -4,7 +4,7 @@ require 'icalendar'
 
 class EventsController < ApplicationController
   def index
-    @events = Event.main_filter(params)
+    @events = ::Events::Filter.run!(params: events_params.to_hash)
     respond_to do |format|
       format.js { render partial: 'filter' }
       format.html { render :index }
@@ -27,5 +27,18 @@ class EventsController < ApplicationController
   def search
     @events = ''
     @events = Event.search(params[:search], params[:page]) if params.key?('search') && !params[:search].empty?
+  end
+
+  def events_params
+    params_list = [
+      :page,
+      :filter_date,
+      :date_start,
+      :city,
+      :organizer,
+      :reset,
+      :submit
+    ]
+    params.permit(*params_list)
   end
 end

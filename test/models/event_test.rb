@@ -73,19 +73,19 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'should work main_filter' do
-    event = Event.main_filter({ filter_date_future: 'future' })
+    event = ::Events::Filter.run!(params: { filter_date_future: 'future' })
     assert_not event.empty?, 'Not find future event in main_filter'
 
     @organizer = organizers(:one)
-    event = Event.main_filter({ organizer: @organizer.name })
+    event = ::Events::Filter.run!(params: { organizer: @organizer.name })
     assert_not event.empty?, 'Should find in main_filter by organizer name'
 
-    event = Event.main_filter({ city: @event.city })
+    event = ::Events::Filter.run!(params: { city: @event.city })
     assert_not event.empty?, 'Should find in main_filter by city'
 
     date_formats = %w[%d-%m-%Y %d.%m.%Y %Y.%m.%d]
     date_formats.each do |date_format|
-      event = Event.main_filter({ date_start: @event.event_date.strftime(date_format) })
+      event = ::Events::Filter.run!({ date_start: @event.event_date.strftime(date_format) })
       assert_not event.empty?, "Should find in main_filter by event_date in #{date_format}"
     end
   end
